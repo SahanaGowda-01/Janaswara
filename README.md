@@ -27,7 +27,7 @@ Ensure you have:
 ### 🔽 Install & Run  
 #### Clone the Repository  
 ```sh
-git clone https://github.com/KavanaN12/JanaSwara-public-issue-reporting-App-/tree/main
+git clone https://github.com/SahanaGowda-01/Janaswara
 ```
 
 ## 🤝 Contributing  
