@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Complaints</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #f0f7ff, #c8dfff);
+            color: #333;
+        }
+
+        .container {
+            width: 85%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4e5d6c;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #2a2a2a;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .complaints-container {
+            background-color: #f9fcff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #1d3557;
+            margin-bottom: 20px;
+        }
+
+        .issue {
+            padding: 20px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #e3f2fd, #ffffff);
+            border-left: 6px solid #1d3557;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .issue:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .issue .details {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .issue .title {
+            font-weight: bold;
+            color: #1d3557;
+            font-size: 1.5em;
+        }
+
+        .issue .desc {
+            font-size: 1em;
+            color: #333;
+        }
+
+        .issue .status {
+            font-size: 1em;
+            color: #2a9d8f;
+            font-weight: bold;
+        }
+
+        .issue .date {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .issue .location {
+            font-size: 1em;
+            color: #5e6a7e;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .issue .photo {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .issue .photo img {
+            border-radius: 8px;
+            width: 100%;
+            height: auto;
+        }
+
+        .no-photo {
+            text-align: center;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .view-btn {
+            background-color: #1d3557;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-btn:hover {
+            background-color: #2a9d8f;
+        }
+
+        .search-container {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .search-container input {
+            width: 70%;
+            padding: 10px;
+            font-size: 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-container button {
+            padding: 10px 15px;
+            font-size: 1.2rem;
+            background-color: #3D52A0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #2a4a8a;
+        }
+        header {
+            background:#3D52A0;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header nav {
+            margin-top: 0.5rem;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+
+        header nav a:hover {
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="color: white;">Welcome, <%= user.name %>!</h1>
+        <nav>
+            <a href="/complaints/raise-complaint/<%= user._id %>">Raise Complaints</a>
+            <a href="/complaints/my-complaints/<%= user._id %>">My Reports</a>
+            <a href="/profile/<%= user._id %>">Profile</a>
+            <a href="/complaints/public-complaints/<%= user._id %>">View all Reports</a>
+            <a href="/home#about">About</a>
+            <a href="/home#features">Features</a>
+            <a href="/home#contact">Contact</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1 class="header">Public Complaints</h1>
+        <div class="search-container">
+            <input type="text" id="searchBar" placeholder="Search by keyword, user name, location, title, description, date, status, or photo">
+        </div>
+    
+        <div class="complaints-container" id="complaintsContainer">
+            <% complaints.forEach(complaint => { %>
+                <div class="issue" 
+                    data-title="<%= complaint.title %>" 
+                    data-description="<%= complaint.description %>" 
+                    data-location="<%= complaint.location %>" 
+                    data-username="<%= complaint.userId && complaint.userId.name ? complaint.userId.name : '' %>" 
+                    data-date="<%= complaint.date ? new Date(complaint.date).toLocaleDateString() : '' %>" 
+                    data-status="<%= complaint.status %>" 
+                    data-photo="<%= complaint.photo ? 'photo' : '' %>">
+                    <div class="details">
+                        <p class="title"><%= complaint.title %></p>
+                        <p class="desc"><%= complaint.description %></p>
+                        <p class="location">Location: <%= complaint.location || 'No Location Provided' %></p>
+                        <p class="date">Date: <%= complaint.date ? new Date(complaint.date).toLocaleDateString() : 'Unknown' %></p>
+                        <p class="status">Status: <%= complaint.status %></p>
+                        <p class="user-name">Reported by: <%= complaint.userId && complaint.userId.name ? complaint.userId.name : 'Anonymous' %></p>
+                    </div>
+                    <div class="photo">
+                        <% if (complaint.photo) { %>
+                            <img src="/uploads/<%= complaint.photo %>" alt="Complaint Photo">
+                        <% } else { %>
+                            <span>No Photo</span>
+                        <% } %>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+
+    <script>
+        function viewComplaintDetails(userId) {
+            fetch(`/getComplaintDetails/:${userId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const modalBody = document.getElementById('modal-body');
+                    modalBody.innerHTML = `
+                        <p><strong>Name:</strong> ${data.name}</p>
+                        <p><strong>Email:</strong> ${data.email}</p>
+                    `;
+                    document.getElementById('complaint-modal').style.display = 'flex';
+                })
+                .catch(error => console.error('Error fetching complaint details:', error));
+        }
+
+        function closeModal() {
+            document.getElementById('complaint-modal').style.display = 'none';
+        }
+
+        function markResolved(complaintId) {
+            fetch(`/resolve-complaint/${complaintId}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ resolved: true })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Complaint marked as resolved');
+                    window.location.reload();
+                } else {
+                    alert('Error marking complaint as resolved');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        const searchBar = document.getElementById('searchBar');
+        const complaintsContainer = document.getElementById('complaintsContainer');
+
+        searchBar.addEventListener('input', function() {
+            const query = searchBar.value.toLowerCase();
+            const issues = complaintsContainer.querySelectorAll('.issue');
+
+            issues.forEach(issue => {
+                const title = issue.dataset.title.toLowerCase();
+                const description = issue.dataset.description.toLowerCase();
+                const location = issue.dataset.location.toLowerCase();
+                const username = issue.dataset.username.toLowerCase();
+                const date = issue.dataset.date.toLowerCase();
+                const status = issue.dataset.status.toLowerCase();
+                const photo = issue.dataset.photo.toLowerCase();
+
+                const matchesQuery = 
+                    (title.includes(query) || 
+                    description.includes(query) || 
+                    location.includes(query) || 
+                    username.includes(query) || 
+                    date.includes(query) || 
+                    status.includes(query) || 
+                    photo.includes(query));
+
+                issue.style.display = matchesQuery ? 'flex' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

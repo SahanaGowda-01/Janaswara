@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolve Complaints</title>
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #f0f7ff, #c8dfff);
+    color: #333;
+}
+
+.container {
+    width: 85%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #4e5d6c;
+}
+
+h1 {
+    font-size: 34px;
+    color: #2a2a2a;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.complaints-container {
+    background-color: #f9fcff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    font-size: 28px;
+    color: #1d3557;
+    margin-bottom: 20px;
+}
+
+.issue {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #e3f2fd, #ffffff);
+    border-left: 6px solid #1d3557;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.issue:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.issue .details {
+    margin-bottom: 20px; 
+}
+
+.issue .title {
+    font-weight: bold;
+    color: #1d3557;
+    font-size: 1.5em;
+}
+
+.issue .desc {
+    font-size: 1em;
+    color: #333;
+}
+
+.issue .status {
+    font-size: 1em;
+    color: #2a9d8f;
+    font-weight: bold;
+}
+
+.issue .date {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+}
+
+.issue .location {
+    font-size: 1em;
+    color: #5e6a7e;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.issue .photo {
+    width: 100%; 
+    height: 300px;
+    margin-bottom: 20px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.issue .photo img {
+    border-radius: 8px;
+    width:50%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.no-photo {
+    text-align: center;
+    color: #888;
+    font-size: 0.9em;
+}
+
+.view-btn {
+    width: 25%;
+    margin-top: 20px; 
+    background-color: #1d3557;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.view-btn:hover {
+    background-color: #2a9d8f;
+    transform: scale(1.05);
+}
+
+.view-btn:active {
+    background-color: #63b3ed;
+    transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .issue {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .issue .photo {
+        width: 100%;
+        height: auto; 
+        margin: 20px 0;
+    }
+
+    .issue .details {
+        max-width: 100%; 
+    }
+
+    .search-container input {
+        width: 100%; 
+    }
+}
+
+.search-container {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.search-container input {
+    width: 50%;
+    padding: 10px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.search-container input:focus {
+    border-color: #2a9d8f;
+}
+header {
+            background:#3D52A0;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header nav {
+            margin-top: 0.5rem;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+
+        header nav a:hover {
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="color: white;">Welcome, <%= user.name %>!</h1>
+        <nav>
+            <a href="/complaints/raise-complaint/<%= user._id %>">Raise Complaints</a>
+            <a href="/complaints/my-complaints/<%= user._id %>">My Reports</a>
+            <a href="/profile2/<%= user._id %>">Profile</a>
+            <a href="/resolve-complaints/<%= user._id %>">View all Reports</a>
+            <a href="/home2#about">About</a>
+            <a href="/home2#features">Features</a>
+            <a href="/home2#contact">Contact</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1 class="header">Resolve Public Complaints</h1>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by title, description, location, status, date..." />
+        </div>
+
+        <div class="complaints-container" id="complaintsContainer">
+            <% if (complaints.length === 0) { %>
+                <p class="no-complaints">No complaints available to resolve.</p>
+            <% } else { %>
+                <% complaints.forEach(complaint => { %>
+                    <div class="issue" 
+                        data-title="<%= complaint.title.toLowerCase() %>"
+                        data-description="<%= complaint.description.toLowerCase() %>"
+                        data-location="<%= complaint.location ? complaint.location.toLowerCase() : '' %>"
+                        data-status="<%= complaint.status.toLowerCase() %>"
+                        data-date="<%= complaint.date ? new Date(complaint.date).toDateString().toLowerCase() : 'not provided' %>">
+                        <div class="details">
+                            <p class="title"><strong>Title:</strong> <%= complaint.title %></p>
+                            <p class="desc"><strong>Description:</strong> <%= complaint.description %></p>
+                            <p class="status"><strong>Status:</strong> <%= complaint.status %></p>
+                            <p class="date"><strong>Date:</strong> <%= complaint.date ? new Date(complaint.date).toDateString() : 'Not Provided' %></p>
+                            <% if (complaint.location) { %>
+                                <p class="location"><strong>Location:</strong> <%= complaint.location %></p>
+                            <% } else { %>
+                                <p class="location">Location: Not Provided</p>
+                            <% } %>
+                        </div>
+                        <div class="photo">
+                            <% if (complaint.photo) { %>
+                                <img src="/uploads/<%= complaint.photo %>" alt="Complaint Photo">
+                            <% } else { %>
+                                <div class="no-photo">No Photo</div>
+                            <% } %>
+                        </div>
+                        <button onclick="resolveComplaint('<%= complaint._id %>')" class="view-btn">Mark as Resolved</button>
+                    </div>
+                <% }) %>
+            <% } %>
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const complaintsContainer = document.getElementById('complaintsContainer');
+        const issues = complaintsContainer.querySelectorAll('.issue');
+
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value.toLowerCase();
+            issues.forEach(issue => {
+                const title = issue.dataset.title;
+                const description = issue.dataset.description;
+                const location = issue.dataset.location;
+                const status = issue.dataset.status;
+                const date = issue.dataset.date;
+
+                if (title.includes(query) || description.includes(query) || location.includes(query) || status.includes(query) || date.includes(query)) {
+                    issue.style.display = 'flex';
+                } else {
+                    issue.style.display = 'none'; 
+                }
+            });
+        });
+
+        function resolveComplaint(complaintId) {
+            fetch(`/resolve-complaint/${complaintId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Complaint marked as resolved.');
+                    window.location.reload();
+                } else {
+                    alert(`Error: ${data.message || 'Failed to resolve complaint.'}`);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janaswara</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #f0f7ff, #c8dfff);
+            color: #333;
+        }
+
+        header {
+            background:#3D52A0;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        nav {
+            margin-top: 0.5rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            font-size: larger;
+        }
+
+        .hero {
+            background-image: url("images/JanaSwara1.jpg");
+            background-size: contain;
+            background-repeat: repeat-x;
+            
+            background-clip: unset;
+            color: #fff;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color:7091E6;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero a {
+            text-decoration: none;
+            background:#8697C4;
+            border: none;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .hero a:hover {
+            background: #005bb5;
+        }
+
+        .content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .features {
+            background: #f4f4f4;
+            padding: 2rem;
+        }
+
+        .features h2 {
+            text-align: center;
+        }
+
+        .features .feature {
+            display: flex;
+            margin: 1rem 0;
+        }
+
+        .features .feature img {
+            width: 100px;
+            height: 100px;
+            margin-right: 1rem;
+            border-radius: 50%;
+        }
+
+        .features .feature div {
+            flex: 1;
+        }
+
+        .testimonials {
+            padding: 2rem;
+            background:#3D52A0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            margin-bottom: 1rem;
+        }
+
+        .testimonials p {
+            font-style: italic;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+        .search-container {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .search-container input {
+            border: 4px solid #3D52A0;
+            width: 70%;
+            padding: 10px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-container button {
+            padding: 10px 15px;
+            font-size: 1.2rem;
+            background-color: #3D52A0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #2a4a8a;
+        }
+
+        .complaints-container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .issue {
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .issue .details {
+            flex: 1;
+        }
+
+        .issue .title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .issue .desc,
+        .issue .location,
+        .issue .date,
+        .issue .status {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .issue .status {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #2a9d8f;
+        }
+
+        .issue .user-name {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #555;
+        }
+
+        .issue .photo img {
+            border-radius: 5px;
+            width: 50px;
+            height: 50px;
+        }
+        .container {
+            width: 85%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4e5d6c;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #2a2a2a;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .complaints-container {
+            background-color: #f9fcff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #1d3557;
+            margin-bottom: 20px;
+        }
+
+        .issue {
+            padding: 20px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #e3f2fd, #ffffff);
+            border-left: 6px solid #1d3557;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .issue:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .issue .details {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .issue .title {
+            font-weight: bold;
+            color: #1d3557;
+            font-size: 1.5em;
+        }
+
+        .issue .desc {
+            font-size: 1em;
+            color: #333;
+        }
+
+        .issue .status {
+            font-size: 1em;
+            color: #2a9d8f;
+            font-weight: bold;
+        }
+
+        .issue .date {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .issue .location {
+            font-size: 1em;
+            color: #5e6a7e;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .issue .photo {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .issue .photo img {
+            border-radius: 8px;
+            width: 100%;
+            height: auto;
+        }
+
+        .no-photo {
+            text-align: center;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .view-btn {
+            background-color: #1d3557;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-btn:hover {
+            background-color: #2a9d8f;
+        }
+.testimonials {
+    padding: 2rem;
+    background: #3D52A0;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    margin: 3rem auto;
+    width: 85%;
+}
+
+.testimonials h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-transform: uppercase;
+}
+
+.testimonials p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #e0e0e0;
+}
+
+.testimonial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.testimonial-text {
+    color: #333;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+.testimonial-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+.user-name {
+    font-weight: bold;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #3D52A0;
+}
+
+.call-to-action {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 2rem;
+    text-transform: uppercase;
+}
+#about{
+    text-align: justify;
+}
+
+#contact {
+    background-color: black; 
+    color: white; 
+    padding: 20px; 
+}
+
+.contact-info h3, .social-media h3 {
+    color: white; 
+}
+
+.contact-info p, .social-media p {
+    color: white; 
+}
+
+.social-media ul {
+    list-style-type: none; 
+    padding: 0; 
+}
+
+.social-media li {
+    display: inline; 
+    margin-right: 15px; 
+}
+
+.social-media a {
+    color: white; 
+    text-decoration: none;
+}
+
+.social-media a:hover {
+    text-decoration: underline;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="color: white;">Welcome, <%= user.name %>!</h1>
+        <nav>
+            <a href="/complaints/raise-complaint/<%= user._id %>">Raise Complaints</a>
+            <a href="/complaints/my-complaints/<%= user._id %>">My Reports</a>
+            <a href="/profile2/<%= user._id %>">Profile</a>
+            <a href="/resolve-complaints/<%= user._id %>">View all Reports</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a> 
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2 style="color: white;">Your Voice, Our Mission</h2>
+        <p>Report public issues easily and efficiently. Together, we make a difference!</p>
+        <a href="/complaints/raise-complaint/<%= user._id %>">Make your Voice Heard</a>
+    </section>  
+    <section class="content" id="about" data-bs-py="scroll">
+        <h2>About Janaswara</h2>
+        <p>
+            Janaswara is more than just a platform for reporting public issues—it's a movement for change. In an age where technology has the <b> power to connect communities </b>and decision-makers instantly, Janaswara harnesses this power to help <b>citizens voice </b>their concerns and get them addressed. Whether it's a complaint about a pothole, an unclean street, a broken traffic signal, or any other civic problem, Janaswara acts as a <b> bridge between citizens and those in authority </b>who can resolve the issues.
+        </p>
+        <p>
+            The platform allows users to <b> submit complaints, track their progress, and receive updates on the status of their issues in real-time</b>. It fosters collaboration among users, local authorities, and private organizations, making it easier to create a collective effort toward problem-solving.
+        </p>
+        <p>
+            At Janaswara, we believe in the power of citizen-driven change. We are committed to ensuring that every report is taken seriously and dealt with in a timely and transparent manner. Our system ensures that complaints are never ignored and that they progress towards resolution, with clear updates provided at every stage.
+        </p>
+        <p>
+            Janaswara also focuses on enhancing civic engagement, allowing users to not only report issues but also interact with others who have similar concerns, creating a community that actively works together to improve public spaces and services. The platform's transparency encourages citizens to <b>hold local authorities accountable </b> and ensures that solutions are implemented efficiently.
+        </p>
+        <p>
+            By providing an accessible, user-friendly platform, Janaswara empowers citizens to take control of their communities. We aim to foster a culture where problems are solved collectively, and public services meet the needs of the people they serve. <b><u>Together, we can create cities, towns, and neighborhoods where everyone’s voice is heard and every problem addressed</u></b>.
+        </p>
+    </section>
+    
+
+    <section class="features" id="features">
+        <h2>Features</h2>
+        <div class="feature">
+            <img src="images\easy to use.png" alt="Easy Reporting Feature">
+            <div>
+                <h3>Easy Reporting</h3>
+                <p>
+                    Reporting an issue has never been easier. With Janaswara, you can submit complaints with just a few taps or clicks. Simply provide a title, description, and location of the issue, and you can attach relevant photos if necessary. The intuitive user interface ensures that anyone, regardless of technical expertise, can report problems effortlessly.
+                </p>
+                <p>
+                    Whether you're on the go or at home, the reporting process is streamlined to minimize time and effort. Additionally, if you're unsure of where to place your complaint, our location tracking feature automatically detects your current location, ensuring that reports are submitted accurately.
+                </p>
+            </div>
+        </div>
+        <div class="feature">
+            <img src="images\clock.jpg" alt="Real-time Updates Feature">
+            <div>
+                <h3>Real-time Updates</h3>
+                <p>
+                    Once you've submitted an issue, you won’t have to wait in the dark for updates. Janaswara provides real-time notifications on the status of your complaint. Whether the authorities are investigating the issue, have started work on it, or have resolved it, you’ll always be in the loop.
+                </p>
+                <p>
+                    Transparency is key to keeping citizens informed. Janaswara allows you to track the progress of your complaint step-by-step, ensuring accountability and timely resolution. You’ll also receive notifications when any action is taken, ensuring you're always up to date on the issue’s status.
+                </p>
+            </div>
+        </div>
+        <div class="feature">
+            <img src="images\engagement-icon - Copy (1).jpg" alt="Community Engagement Feature">
+            <div>
+                <h3>Community Engagement</h3>
+                <p>
+                    Janaswara isn’t just a tool for submitting complaints—it's a platform for building a stronger, more connected community. Users can interact with one another, share concerns, and collaborate on common issues. By fostering community engagement, we encourage citizens to work together, raise awareness about issues, and apply collective pressure for faster resolutions.
+                </p>
+                <p>
+                    You can see the issues that are important to your neighbors and others in your area, vote for issues you care about, or offer solutions. This communal approach ensures that no one has to face public issues alone.
+                </p>
+            </div>
+        </div>
+        <div class="feature">
+            <img src="images\track-progress.jpg" alt="Track Progress Feature">
+            <div>
+                <h3>Track Progress</h3>
+                <p>
+                    One of the most unique features of Janaswara is the ability to track the progress of your complaint in real-time. This feature ensures that your issue is not only acknowledged but actively worked on. Once you file a complaint, you can monitor each stage, from submission to resolution, so you know exactly where things stand at any time.
+                </p>
+                <p>
+                    This progress tracking is designed to foster transparency. You can see who is handling your complaint, what steps are being taken, and when the issue is expected to be resolved. In case of delays or complications, the platform will notify you, giving you peace of mind that your complaint is being handled appropriately.
+                </p>
+            </div>
+        </div>
+        <div class="feature">
+            <img src="images\Analytics2.png" alt="Statistical Analysis Feature">
+            <div>
+                <h3>Detailed Analytics and Reporting</h3>
+                <p>
+                    Janaswara doesn't just help solve problems—it helps you understand patterns in your community. Our platform collects data on the types of complaints submitted, the areas most affected, and the speed at which issues are resolved. This data can be used by local authorities to identify problem areas and improve services.
+                </p>
+                <p>
+                    Through advanced analytics, citizens and authorities alike can gain insights into community needs and priorities, ensuring that future planning is informed by real, actionable data. This helps in creating more efficient public policies and solutions.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials" id="testimonials">
+        <h2>What Our Users Say</h2>
+        <p>
+            At Janaswara, we value the voices of our users. Here’s what some of them have to say about their experiences with our platform:
+        </p>
+        
+        <div class="testimonial">
+            <img src="uploads\1735240203062-profile photo.jpg" alt="User A" class="testimonial-img">
+            <div class="testimonial-text">
+                <p>
+                    "Janaswara has completely changed the way we interact with our local authorities. The ease with which I can report issues has made me feel like my concerns truly matter. The real-time updates keep me in the loop, and knowing that I can track progress gives me confidence that my complaints are being taken seriously."
+                </p>
+                <p class="user-name">- Miss Savitha, City Resident</p>
+            </div>
+        </div>
+    
+        <div class="testimonial">
+            <img src="uploads\1735240848369-profile2.png" alt="User B" class="testimonial-img">
+            <div class="testimonial-text">
+                <p>
+                    "I love the community engagement feature! It’s not just about reporting problems—it's about working together with others to make meaningful changes. I've seen several complaints get resolved faster because of the collective action from the community. Janaswara really empowers us to make a difference."
+                </p>
+                <p class="user-name">- Mr Nagaraju, Panchayat Member</p>
+            </div>
+        </div>
+        
+        <p class="call-to-action">
+            Join thousands of satisfied users and make your voice heard! Report issues and track resolutions in your community with Janaswara today.
+        </p>
+    </section>
+    
+    <footer id="contact">
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p>If you have any questions, feedback, or need assistance, we are here to help! Reach out to us through any of the following methods:</p>
+            <p><strong>Email:</strong> <a href="mailto:janaswara@115.gmail.com">janaswara@115.gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+12302383290">123-023-832-90</a></p>
+            <p><strong>Address:</strong> Janaswara Headquarters, Civic Road, City Name, Country</p>
+            <p><strong>Business Hours:</strong> Monday to Friday, 9 AM - 6 PM (Local Time)</p>
+            <p><strong>Support Hotline:</strong> If you're experiencing issues with the platform, please call our dedicated support hotline: <a href="tel:+1234567890">123-456-7890</a></p>
+        </div>
+        <div class="social-media">
+            <h3>Follow Us</h3>
+            <p>Stay connected with us for updates, community events, and more:</p>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+        </div>
+        <p>&copy; 2024 Janaswara. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        const searchBar = document.getElementById('searchBar');
+        const complaintsContainer = document.getElementById('complaintsContainer');
+
+        searchBar.addEventListener('input', function() {
+            const query = searchBar.value.toLowerCase();
+            const issues = complaintsContainer.querySelectorAll('.issue');
+
+            issues.forEach(issue => {
+                const title = issue.dataset.title.toLowerCase();
+                const description = issue.dataset.description.toLowerCase();
+                const location = issue.dataset.location.toLowerCase();
+                const username = issue.dataset.username.toLowerCase();
+                const date = issue.dataset.date.toLowerCase();
+                const status = issue.dataset.status.toLowerCase();
+                const photo = issue.dataset.photo.toLowerCase();
+
+                const matchesQuery = 
+                    (title.includes(query) || 
+                    description.includes(query) || 
+                    location.includes(query) || 
+                    username.includes(query) || 
+                    date.includes(query) || 
+                    status.includes(query) || 
+                    photo.includes(query));
+
+                issue.style.display = matchesQuery ? 'flex' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

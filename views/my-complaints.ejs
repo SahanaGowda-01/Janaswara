@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Complaints</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #f0f7ff, #c8dfff);
+            color: #333;
+        }
+
+        .container {
+            width: 85%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4e5d6c;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #2a2a2a;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container {
+            width: 100%;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .search-container input {
+            width: 50%;
+            padding: 10px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .search-container input:focus {
+            border-color: #2a9d8f;
+        }
+
+        .complaints-container {
+            background-color: #f9fcff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #1d3557;
+            margin-bottom: 20px;
+        }
+
+        .issue {
+            padding: 20px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #e3f2fd, #ffffff);
+            border-left: 6px solid #1d3557;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .issue:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .issue .details {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .issue .title {
+            font-weight: bold;
+            color: #1d3557;
+            font-size: 1.5em;
+        }
+
+        .issue .desc {
+            font-size: 1em;
+            color: #333;
+        }
+
+        .issue .status {
+            font-size: 1em;
+            color: #2a9d8f;
+            font-weight: bold;
+        }
+
+        .issue .date {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .issue .location {
+            font-size: 1em;
+            color: #5e6a7e;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .issue .photo {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .issue .photo img {
+            border-radius: 8px;
+            width: 100%;
+            height: auto;
+        }
+
+        .no-photo {
+            text-align: center;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .no-complaints {
+            text-align: center;
+            font-size: 1.2em;
+            color: #888;
+        }
+        header {
+            background:#3D52A0;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header nav {
+            margin-top: 0.5rem;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+
+        header nav a:hover {
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="color: white;">Welcome, <%= user.name %>!</h1>
+        <nav>
+            <a href="/complaints/raise-complaint/<%= user._id %>">Raise Complaints</a>
+            <a href="/complaints/my-complaints/<%= user._id %>">My Reports</a>
+            <a href="/profile/<%= user._id %>">Profile</a>
+            <a href="/complaints/public-complaints/<%= user._id %>">View all Reports</a>
+            <a href="/home#about">About</a>
+            <a href="/home#features">Features</a>
+            <a href="/home#contact">Contact</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1 class="header">My Complaints</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search complaints by title, description, location, status, or date..." />
+        </div>
+        <% if (complaints && complaints.length > 0) { %>
+            <div class="complaints-container" id="complaintsContainer">
+                <h2>Active-Complaints</h2>
+                <% complaints.forEach(complaint => { %>
+                    <% if(complaint.status=='Open') { %>
+                    <div class="issue" 
+                         data-title="<%= complaint.title.toLowerCase() %>"
+                         data-description="<%= complaint.description.toLowerCase() %>"
+                         data-location="<%= complaint.location ? complaint.location.toLowerCase() : '' %>"
+                         data-status="<%= complaint.status.toLowerCase() %>"
+                         data-date="<%= complaint.date ? new Date(complaint.date).toDateString().toLowerCase() : 'not provided' %>">
+                        <div class="details">
+                            <p class="title"><%= complaint.title || 'Untitled Complaint' %></p>
+                            <p class="desc"><%= complaint.description || 'No description provided.' %></p>
+                            <p class="status"><%= complaint.status || 'Status not provided' %></p>
+                            <p class="date">
+                                <% if (complaint.date) { %>
+                                    <%= new Date(complaint.date).toDateString() %>
+                                <% } else { %>
+                                    Date: Not Provided
+                                <% } %>
+                            </p>              
+                            <% if (complaint.latitude && complaint.longitude) { %>
+                                <p class="location"><strong>Location:</strong> <%= complaint.location || 'Location not provided' %></p>
+                            <% } else { %>
+                                <p class="location">Location: Not Provided</p>
+                            <% } %>
+                        </div>
+                        <div class="photo">
+                            <% if (complaint.photo) { %>
+                                <img src="/uploads/<%= complaint.photo %>" alt="Complaint Photo">
+                            <% } else { %>
+                                <div class="no-photo">No Photo</div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <% } %>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <div class="no-complaints">
+                <p>You have no complaints at the moment.</p>
+            </div>
+        <% } %>
+        <br>
+        <br>
+        <% if (complaints && complaints.length > 0) { %>
+            <div class="complaints-container" id="complaintsContainer">
+                <h2>Resolved-Complaints</h2>
+                <% complaints.forEach(complaint => { %>
+                    <% if(complaint.status!='Open') { %>
+                    <div class="issue" 
+                         data-title="<%= complaint.title.toLowerCase() %>"
+                         data-description="<%= complaint.description.toLowerCase() %>"
+                         data-location="<%= complaint.location ? complaint.location.toLowerCase() : '' %>"
+                         data-status="<%= complaint.status.toLowerCase() %>"
+                         data-date="<%= complaint.date ? new Date(complaint.date).toDateString().toLowerCase() : 'not provided' %>">
+                        <div class="details">
+                            <p class="title"><%= complaint.title || 'Untitled Complaint' %></p>
+                            <p class="desc"><%= complaint.description || 'No description provided.' %></p>
+                            <p class="status"><%= complaint.status || 'Status not provided' %></p>
+                            <p class="date">
+                                <% if (complaint.date) { %>
+                                    <%= new Date(complaint.date).toDateString() %>
+                                <% } else { %>
+                                    Date: Not Provided
+                                <% } %>
+                            </p>              
+                            <% if (complaint.latitude && complaint.longitude) { %>
+                                <p class="location"><strong>Location:</strong> <%= complaint.location || 'Location not provided' %></p>
+                            <% } else { %>
+                                <p class="location">Location: Not Provided</p>
+                            <% } %>
+                            <p class="user-name">Resolved by: <%= complaint.resolvedBy && complaint.resolvedBy.name ? complaint.resolvedBy.name : 'Anonymous' %></p>
+                        </div>
+                        <div class="photo">
+                            <% if (complaint.photo) { %>
+                                <img src="/uploads/<%= complaint.photo %>" alt="Complaint Photo">
+                            <% } else { %>
+                                <div class="no-photo">No Photo</div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <% } %>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <div class="no-complaints">
+                <p>You have no complaints at the moment.</p>
+            </div>
+        <% } %>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const complaintsContainer = document.getElementById('complaintsContainer');
+        const issues = complaintsContainer.querySelectorAll('.issue');
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value.toLowerCase();
+            issues.forEach(issue => {
+                const title = issue.dataset.title;
+                const description = issue.dataset.description;
+                const location = issue.dataset.location;
+                const status = issue.dataset.status;
+                const date = issue.dataset.date;
+
+                if (title.includes(query) || description.includes(query) || location.includes(query) || status.includes(query) || date.includes(query)) {
+                    issue.style.display = 'flex';
+                } else {
+                    issue.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    height: 200px;
+    width: 200px;
+    background-image: url('images/Icon.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 50%;
+    display: flex;
+}
+#WebName{
+    color: #1e3d58;
+    font-size: 500%;
+}
+.Lpage{
+    height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 3%;
+}
+.login{
+    height: 100%;
+    width: 35%;
+    margin: 1%;
+    border: 10%;
+    border-radius: 4%;
+    background-color: white;
+    align-content: center;
+    text-align: center;
+    color: white;
+}
+.login a{
+    background-color: #0d6efd;
+    padding: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: medium;
+    text-decoration: none;
+    color: white;
+    border-radius: 10%;
+    border: #0d6efd;
+}
+.login a:hover{
+    background-color: #0a58ca;
+    border-color: #0a53be;
+}
+#public{
+    background-image: url("images/GroupofPeople.jpg");
+    background-repeat: repeat-x;
+    background-size: cover;
+}
+#authority{
+    background-image: url("images/AuthorityWorking.jpg");
+    background-repeat: repeat-x;
+    background-size: cover;
+}
+p{
+    font-size: medium;
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+footer {
+    background: #1e3d58;
+    color: #fff;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+#collapse3id {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signup-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+    box-shadow: 4px 8px 6px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+.signup-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group input, .form-group select {
+    width: 95%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-group button {
+    margin-top: 5px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.form-group button:hover {
+    background-color: #0056b3;
+}
+#other-gender-input {
+    display: none;
+    margin-top: 10px;
+}
+.form-group .d-inline-flex{
+    width: 100%;
+}
+#button-resend:hover{
+    color: aliceblue;
+    text-decoration: underline;
+}
+#final,#signup a{
+    color: white;
+    text-decoration: none;
+}
+#collapse4id{
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 400px;
+    margin: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.container h2 {
+    margin-bottom: 20px;
+    font-size: 1.9rem;
+    text-align: center;
+}
+#collapse form {
+    display: flex;
+    flex-direction: column;
+}
+.container label {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #555;
+}
+.container input, select, button {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.container input:focus, select:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+.container button {
+    margin-top: 20px;
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.container button:hover {
+    background: #0056b3;
+}
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.terms {
+    font-size: smaller;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+.terms input{
+    margin: 10px;
+    margin-top: 20px;
+    width: 15px;
+}
+#submit{
+    width: 100%;
+}
+.card{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.login-container {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Input Fields */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Buttons */
+.btns {
+    width: 100%;
+    padding: 10px;
+    background-color: #5f8cb9;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btns:hover {
+    background-color: #075fbd;
+}
+
+/* Google Button */
+.google-btn {
+    background-color: #db4437;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+    transition: background-color 0.3s;
+}
+
+.google-btn:hover {
+    background-color: #b33126;
+}
+
+/* Options & Links */
+.options {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.options a {
+    color: #007bff;
+    text-decoration: none;
+    border: 0;
+}
+
+.options a:hover {
+    text-decoration: underline;
+}
+#loc{
+    font-size: medium;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+
+#loc input{
+    margin: 10px;
+    margin-top: 2%;
+    width: 15px;
+}
+.or-divider {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    color: #888;
+    font-size: 14px;
+}
+
+.or-divider hr {
+    flex: 1;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+.or-divider span {
+    margin: 0 10px;
+}
+
+.signup p {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.signup a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
+
+.options{
+    padding: 10px;
+    width: 100%;
+    border:1px solid #ccc;
+    color: #555;
+    font-size: medium;
+    text-decoration: none;
+    align-items: center;
+}
+.optionsforgot{
+    padding: 10px;
+    width: 100%;
+    border:none;
+    border-radius: 5px;
+    color: #555;
+    font-size: medium;
+    text-decoration: none;
+    align-items: center;
+    text-align: center;
+}
+.ordivider{
+    font-size: small;
+    width: 100%;
+    color: #888;
+    display: flex;
+    justify-content: space-evenly;
+}
+.ordivider hr{
+    width: 100%;
+    color: #ccc;
+    margin:0%;
+    margin-top: 10px;
+}
+.ordivider span{
+    margin-left: 8px;
+    margin-right: 8px;
+}
+#collapse4id select{
+    width: 100%;
+    color: #888;
+}
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+        <div class="logo"></div>
+        <h1 id="WebName">JanaSwara</h1>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <div class="Lpage">
+        <div id="public" class="login">
+            <h1 style="font-size: 400; font-weight: 700;">Public Login</h1>
+            <p>Initiate a complaint for problems of your Locality</p>
+            <p class="d-inline-flex gap-1">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"  style="padding: 10px;">
+                  Login
+                </a>
+            </p>
+            <p>Not a member?</p>
+            <p class="d-inline-flex gap-1">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2"  style="padding: 10px;">
+                  Sign-Up
+                </a>
+            </p>
+        </div>
+        <div id="authority" class="login">
+            <h1 style="font-size: 400; font-weight: 700;">Authority Login</h1>
+            <p>Resolve the Complaints, View public Opinions,Update report</p>
+            <p class="d-inline-flex gap-1">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1" style="padding: 10px;" >
+                  Login
+                </a>
+            </p>
+            <p>Not a member?</p>
+            <p class="d-inline-flex gap-1">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3"  style="padding: 10px;">
+                  Sign-Up
+                </a>
+            </p>
+        </div>
+    </div>
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            <div class="login-container">
+                <h2>Public Login</h2>
+                <form id="login-form"  action="/publiclogin"  method="POST">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                        
+                        
+                    <button type="submit" class="btns">Login</button>
+                    <div class="optionsforgot">
+                        <a href="/forgotPassward" id="forgot-password">Forgot Password?</a>
+                    </div>
+                </form>
+                <div class="ordivider">
+                    <hr>
+                    <span>OR</span>
+                    <hr>
+                </div>
+                <button id="google-login" class="google-btn">Sign in with Google</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="collapse" id="collapseExample1">
+        <div class="card card-body">
+            <div class="login-container">
+                <h2>Authority Login</h2>
+                <form id="login-form"  action="/authoritylogin"  method="POST">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <button type="submit" class="btns">Login</button>
+                    <div class="optionsforgot">
+                        <a href="/forgotPassward" id="forgot-password">Forgot Password?</a>
+                    </div>
+                </form>
+                <div class="or-divider">
+                    <hr> <span>OR</span> <hr>
+                </div>
+                <button id="google-login" class="google-btn">Sign in with Google</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="collapse" id="collapseExample2">
+        <div class="card card-body" id="collapse3id">
+            <form class="signup-form" action="/publicsignUp"  method="POST" enctype="multipart/form-data">
+                <h2 style="font-size: 1.9rem;">Public Signup</h2>
+                <div class="form-group">
+                    <button type="button" id="google-signup">Sign Up with Google</button>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" placeholder="Enter your date of birth" required min="1930-01-01" max="2010-01-01">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="" selected disabled hidden>Select Gender</option>
+                        <option value="male" name="male">Male</option>
+                        <option value="female" name="female">Female</option>
+                        <option value="other" name="other">Other</option>
+                    </select>
+                    <input type="text" id="other-gender-input" name="other-gender" placeholder="Please specify your gender">
+                </div>
+                <div class="form-group">
+                    <label for="about">About</label>
+                    <input type="text" id="about" name="about" placeholder="Tell us about yourself *(optional)">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+        
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <span class="error" id="passwordError"></span>
+                </div>
+                <label for="photo">Profile Photo</label>
+                    <input type="file" id="photo" name="photo" accept="image/*" required>
+                <div id="message"></div>
+
+                <div class="terms">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the <a href="#termsModal" target="_blank">Terms and Conditions</a>.</label>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="signup">Sign-Up</button>
+                </div> 
+            </form>
+        </div>
+    </div>
+    <div class="collapse" id="collapseExample3">
+        <div class="card card-body" id="collapse4id">
+            <div class="container">
+                <h2>Authority Sign-Up</h2>
+                <form id="signUpForm"  class="signup-form" action="/authoritysignUp"  method="POST" enctype="multipart/form-data">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter Name">
+                    <span class="error" id="nameError"></span>
+
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="" selected disabled hidden>Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <input type="text" id="other-gender-input" name="other-gender" placeholder="Please specify your gender">
+                    </div>
+
+                    <label for="email">Official Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="MyEmail@gmail.com">
+                    <span class="error" id="emailError"></span>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+        
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <span class="error" id="passwordError"></span>
+
+                    <div id="message"></div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+
+                    <label for="sector">Sector</label>
+                    <select id="sector" name="sector" required>
+                        <option value="" selected disabled hidden>Select your Sector</option>
+                        <option value="public" name="public">Public</option>
+                        <option value="private" name="private">Private</option>
+                    </select>
+                    <label for="sector">Department</label>
+                    <select id="department" name="department" required>
+                        <option value="" selected disabled hidden>Select your Department</option>
+                    </select>
+
+                    <label for="designation">Designation</label>
+                    <select id="designation" name="designation" required>
+                        <option value="" selected disabled hidden>Select your Designation</option>
+                        <option value="manager">Manager</option>
+                        <option value="deputyhead">Deputy Head</option>
+                        <option value="comiteeMember">Comitee Member</option>
+                    </select>
+
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
+
+                    <label for="photo">Profile Photo</label>
+                    <input type="file" id="photo" name="photo" accept="image/*" required>
+
+                    <label for="idProofPhoto">ID Proof Photo</label>
+                    <input type="file" id="idProofPhoto" name="idProofPhoto" accept="image/*,application/pdf" required>
+
+                    <div class="terms">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the <a href="#termsModal" target="_blank">Terms and Conditions</a>.</label>
+                    </div>
+        
+                    <button type="submit" id="submit">Sign Up</button>
+                </form>
+            </div>
+        
+            <div id="termsModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); color:white; padding:20px; overflow:auto;">
+                <h2>Terms and Conditions</h2>
+                <p>By signing up, you agree to the following terms and conditions:</p>
+                <ul>
+                    <li>You must provide accurate and complete information during the registration process.</li>
+                    <li>Your account is personal and non-transferable.</li>
+                    <li>You are responsible for maintaining the confidentiality of your account credentials.</li>
+                    <li>All data provided will be used in compliance with applicable privacy laws.</li>
+                    <li>We reserve the right to suspend or terminate accounts for violations of these terms.</li>
+                </ul>
+                <button onclick="document.getElementById('termsModal').style.display='none'">Close</button>
+            </div>
+        </div>
+    </div>
+    <footer id="contact">
+        <p>&copy; 2024 Janaswara. All rights reserved.</p>
+        <p>Gmail: janaswara@115.gmail.com</p>
+        <p>HelpLine: 123023832-90</p>
+    </footer>
+  </body>
+  <script>
+
+
+const agreeCheckbox = document.getElementById('terms');
+    const submitButton = document.getElementById('submit');
+
+    agreeCheckbox.addEventListener('change', function() {
+      submitButton.disabled = !agreeCheckbox.checked;
+    });
+    document.querySelectorAll('.btn-primary').forEach(button => {
+    button.addEventListener('click', function() {
+        const collapse = new bootstrap.Collapse(document.getElementById('collapseExample'), { toggle: false });
+        const collapse1 = new bootstrap.Collapse(document.getElementById('collapseExample1'), { toggle: false });
+        const collapse2 = new bootstrap.Collapse(document.getElementById('collapseExample2'), { toggle: false });
+        const collapse3 = new bootstrap.Collapse(document.getElementById('collapseExample3'), { toggle: false });
+        if (this.getAttribute('href') === "#collapseExample") {
+            collapse.toggle(); 
+            collapse1.hide();
+            collapse2.hide();
+            collapse3.hide();
+        } else if (this.getAttribute('href') === "#collapseExample1"){
+            collapse1.toggle();
+            collapse.hide(); 
+            collapse2.hide();
+            collapse3.hide();
+        }
+        else if(this.getAttribute('href') === "#collapseExample2"){
+            collapse2.toggle();
+            collapse.hide(); 
+            collapse1.hide();
+            collapse3.hide();
+        }
+        else if(this.getAttribute('href') === "#collapseExample3"){
+            collapse3.toggle();
+            collapse.hide(); 
+            collapse1.hide();
+            collapse2.hide();
+        }
+    });
+});
+
+document.querySelector("form").addEventListener("submit", function (event) {
+    const password = document.querySelector("input[name='password']").value;
+    const confirmPassword = document.querySelector("input[name='confirmPassword']").value;
+
+    if(confirmPassword!=''){
+        if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        event.preventDefault();
+    }
+    }
+
+    const email = document.querySelector("input[name='email']").value;
+    const password1 = document.querySelector("input[name='password']").value;
+
+    if (!email || !password1) {
+        alert("Please fill in both the email and password fields.");
+        event.preventDefault();
+        return;
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.signup-form');
+    const genderSelect = document.getElementById('gender');
+    const otherGenderInput = document.getElementById('other-gender-input');
+    const sectorSelect = document.getElementById('sector');
+    const departmentSelect = document.getElementById('department');
+    genderSelect.addEventListener('change', function() {
+        if (genderSelect.value === 'other') {
+            otherGenderInput.style.display = 'block';
+        } else {
+            otherGenderInput.style.display = 'none';
+        }
+    });
+    sectorSelect.addEventListener('change',function(){
+        departmentSelect.innerHTML = '<option value="">Select Option</option>';
+    
+    var options = [];
+
+    if (sectorSelect.value === "public") {
+        options = ["Health", "Education","Muncipality","panchayat","External Affairs"];
+    } else if (sectorSelect.value === "private") {
+        options = ["Gokuldham Society", "Christaraja School","Ramaiah","Kwality PG"];
+    }
+
+    options.forEach(function (department) {
+        var optionElement = document.createElement("option");
+        optionElement.value = department.toLowerCase().replace(" ", "_");
+        optionElement.textContent = department;
+        departmentSelect.appendChild(optionElement);
+    }
+    );
+    });
+
+    document.getElementById('send-otp').addEventListener('click', function() {
+        const phone = document.getElementById('phone').value;
+        if (phone) {
+            alert('OTP sent to ' + phone);
+        } else {
+            alert('Please enter your phone number.');
+        }
+    });
+
+    document.getElementById('google-signup').addEventListener('click', function() {
+        alert('Google sign-up clicked.');
+    });
+});
+document.querySelector('a[href="#termsModal"]').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('termsModal').style.display = 'block';
+});
+  </script>
+</html>
